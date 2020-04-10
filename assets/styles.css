@@ -1,0 +1,75 @@
+.site-header {
+	background: #000000;
+	overflow: auto;
+	width: 100%;
+}
+
+.name-header {
+	float: left;
+	height: fit-content;
+	padding-left: 1%;
+}
+
+.name-header p {
+	font-style: normal;
+	font-weight: bold;
+	font-size: 28px;
+	color: rgb(95, 95, 95);
+}
+
+.title-bar {
+	float: right;
+	padding: 5px;
+}
+
+.title-bar li {
+	padding: 5px;
+	float: left;
+}
+
+.title-bar li a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: normal;
+	padding: 16px;
+}
+
+.proposal {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+body {
+	margin-top: 0%;
+	margin-left: 0%;
+	margin-right: 0%;
+	font-family: sans-serif;
+}
+
+.proposal p {
+	line-height: 25px;
+}
+
+.schedule li {
+	line-height: 25px;
+}
+
+.resources li {
+	padding: 3px;
+}
+
+.resources li a {
+	text-decoration: none;
+	line-height: normal;
+}
+
+.goals h4 {
+	padding-left: 2%;
+}
+
+.goals p {
+	padding-left: 4%;
+}
