@@ -1,1 +1,1 @@
-# icesolation
+# Ice-olation: CS184 Final Project
