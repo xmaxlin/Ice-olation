@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<title>Ice-olation</title>
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>Ice-olation</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+    <div class="site-header">
+        <div class="name-header">
+            <p style="color:white">Ice-olation - CS184 Final Project</p>
+        </div>
+        <div class="title-bar">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <a href="index.html" style="color:white">Proposal</a>
+                </li>
+                <li>
+                    <a href="milestone.html" style="color:white">Milestone</a>
+                </li>
+                <li>
+                    <a href="index.html" style="color:white">Final Report</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="proposal">
+        <div align="center">
+            <h1>Social Ice-olation</h1>
+            <h2>Rendering Realistic Ice</h2>
+            <h3>Team: Rina Lu, Sean Chen, Max Lin</h3>
+        </div>
+        <div class="direction">
+            <h2>
+                Direction
+            </h2>
+            <p>
+                Following the feedback that we received from the TA, we decided to make our project goal rendering realisitc, simulating the formation of airbubbles inside the ice structure. To this end, we decided to follow two papers in particlar
+                to aid us in completing this task: <a href="https://nccastaff.bournemouth.ac.uk/jmacey/MastersProjects/MSc09/Salas/Vanessa_Salas_Castillo.pdf">Castillo's paper on rendering blue ice</a> and <a href="https://aminghafari.github.io/projects/realistic-rendering-ice.pdf">
+                    Ghafari and Park's paper on Crack Propagations and bubble generations
+                </a>. The first paper was used to figure out the steps in rendering realistic looking ice, while the second paper will be used to guide us through generating
+                bubble and cracks in the ice.
+            </p>
+        </div>
+        <div class="tools">
+            <h2>
+                Tools
+            </h2>
+            <p>
+                Following closely with Castillo's paper led us to first learn how to use Pixar's renderman and Maya in order to process RIB files. We were able reach a level of comfort using tools like Maya and Blender and able to sculpt an 
+                ice model, however there were barely any modern tutorials on how to use renderman's coding language, RSL, in hand with Maya. The best we found was a guide under the Renderman documentation on how to simulate <a href="https://renderman.pixar.com/resources/RenderMan_20/subsurface.html">translucency and subsurface scattering</a>, 
+                however we encountered many problems when trying to render the examples in this guide. One problem was compling the .sl files so that it could be rendered on an arbitrary rib file. We tried using renderman pro server and 3delight, but 
+                were unable to figure out what the problem was. We also had problems exporting our ice model from Maya as a RIB file and searched for alternatives but were unable to find any dated solutions. We decided to follow along with our class projects 
+                and use a collada file instead of using Renderman and RIB. Currently, we are looking at creating GLSL shaders instead.
+            </p>
+        </div>
+
+        <div class="progress">
+            <h2>
+                Progress
+            </h2>
+            <p>
+                Because group members were busy with other assignments and classes, living in different time zones, and differnt times of availablility, we were unable to meet up and work for on the project very much since the proposal. We tried following
+                our timeline and familiarized ourselves with the tools we expected to use and began developing the tools that we'd need when rendering ice. With a mix of Maya and Blender, we were able to sculpt a model and add lighting and cameras to the 
+                environement as seen in fig 1.1, and with Renderman, we successfuly rendered the model as in fig 1.2, however we were unable to render the model with any shaders, let alone compiling our own shaders (fig 1.3, fig 1.4).
+            </p>
+            <div align="center">
+                <table style="width=100%">
+                    <tr>
+                        <td>
+                            <img src="assets/img/maya.png" height="250px" />
+                            <figcaption align="middle">Default Model</figcaption>
+
+                        </td>
+
+                        <td>
+                            <img src="assets/img/mayaRender.png" height="250px" />
+                            <figcaption align="middle">Default Rendering with Renderman</figcaption>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="assets/img/mayaShader.png" height="250px" />
+                            <figcaption align="middle">Shaded Model</figcaption>
+                        </td>
+                        <td>
+                            <img src="assets/img/mayaShaderRender.png" height="250px" />
+                            <figcaption align="middle">Shaded Model (no change)</figcaption>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p>
+
+            </p>
+
+
+        </div>
+
+    </div>
+</body>
+</html>
