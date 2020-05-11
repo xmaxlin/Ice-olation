@@ -43,23 +43,136 @@
             <iframe width="560" height="315" src="https://www.youtube.com/embed/z0nJ2z7PKcg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="abstract">
-
+            <!--
+            A paragraph summary of the entire project
+        -->
+            <h2>
+                Abstract
+            </h2>
+            <p>
+                In this class, we explored many ways light interacts with different surfaces. For our final project, we wanted to explore how to render ice and how light interacts with it.
+                What makes ice compelling to us as a material is its nuanced texture and its translucency. Ice forms through crystallization, and often has air bubbles and cracks trapped under its surface. The
+                surface itself usually has imperfections as well, and is both bumpy and glossy due to the ice melting. In part becuase of the structural properties of ice, when light shines on ice, it is
+                refreacted through it. We set out to model ice as realistically as possible, creating a model that features crack propagation and bubble generations and develop a shader that emulates the subsurface
+                scattering affect of ice.
+            </p>
         </div>
 
         <div class="technical">
+            <!--
+            A 1-2 Page summary of technical approach, techniques used, algorithms implemented, highlight how approach varied from references used
+            A description of problems encountered
+            Lessons learned
+        -->
+            <h2>
+                Technical Approach
+            </h2>
+            <h4>
+                Shader
+            </h4>
+            <p>
+                At first, we developed our OSL shader in correspondance to Castillo's paper. We first incorporated a Microfacet Glass BSDF as described in Ghafari's paper to have something relatively close to ice. Then we began implementing subsurface scattering as described in
+                the Nvidia and Renderman paper linked below in resources, but we ignored the two pass method described in the Castillo paper. The two links walks through the entire process of approximating the effects of subsurface scattering. One change we made was the index of refraction to match
+                that of ice, which is 1.309. We also added a blue-ish diffuse color to give the ice a more realistic blue hue instead of a clear shiny crystal appearance. We then took parts of Castillo's add-ons to give the ice a more realistic look. This includes a frost mask, but we instead tried a dirt
+                mask. To do this, we just used Pixar's dirt shader colored differently and added a random distribution to it. We also added a fractal noise as a displacement map to make the surface of the ice more bumpy and less smooth, similar to what we did in project 4. Castillo had a lot more addon effects like
+                sparkles, wet effect, and color bleeding, but we decided that with our time frame, we would not be able to complete every part of the paper, so we stuck with the subset we described above.
+            </p>
+            <h4>
+                Bubble Generation and Cracks
+            </h4>
+            <p>
+                Originally, we were going to make a python script that introduces small random spheres to our mesh, but later we found out that Blender has a method of introducing bubbles to the mesh with particle systems. This was done by having a particle system of small spheres with randomized
+                heights. This alone does well to give off the appearance of realistic bubble generation. We experimented with bubble generations in different shapes, like hair particle systems, but it doesn't look as appealing. We also tried our hand at crack generation without getting too 
+                involved in the mathematics, but the best we could figure out was to modify the mesh itself in an unrealistic fashion. This includes either making divots in the mesh or sharper edges.
+            </p>
+        </div>
 
+        <div class="problems">
+            <h2>
+                Problems Encountered
+            </h2>
+            <p>
+                <b>Problem: Unusable Shading languages</b> - For whatever reason, Max's computer is unable to compile or use RSL, which is what we initially set out to use as we were following Castillo's paper. We tried different RSL learning tutorials, however they were
+                either outdated or just didn't appear to work.
+                <br />
+                <br />
+                <b>Solution: </b> What we ended up doing was trying other shading languages and adapting those shading languages to follow alongside Castillo's procedure. We were going to use OpenGL like we did in project 4, but then we stumbled upon a series of tutorials using
+                OSL and SE Expressions to do the same thing that RSL does, and they were compatible with Renderman in Maya, which was a big help getting over this first wall.
+            </p>
+            <br />
+            <p>
+                <b>Problem: Transfering models between Blender and Maya</b> - Creating a model and emulating bubble generations was done in Blender, but we couldn't figure out how to keep the changes to the mesh and expore it to Maya. Whenever we create bubbles or air pockets inside
+                some mesh model of an ice cube, the bubbles would not transfer over to Maya when we save it as a COLLADA (.dae) file. We tried other save formats, but none of them transfered well to Maya. We considered moving the shader built for Renderman for Maya onto Blender, however
+                the unofficial Blender plugin for Renderman was not the same as the one for Maya. Either we installed the plugin incorrectly or the plugin was outdated for our version of Blender or the plugin just didn't work, but we couldn't get our OSL shader working in Blender with other features
+                that we combined with our OSL shaders.
+                <br />
+                <br />
+                <b>Solution: </b> In the end, since we were low on time and unable to meet up frequently due to other responsibilities, we split our results. Below in the results, you can see our model with bubbles inside it (using Blender's Glass BSDF instead of our shader).
+                For the Maya renderings, we ended manually placing spheres inside our model to emulate the bubbles (albiet, not as small and placed very few with litter affect on appearance).
+            </p>
+        </div>
+
+        <div class="lessons">
+            <h2>
+                What we learned
+            </h2>
+            <p>
+                We came out of this project with a lot of experience in building shaders (expanding on what we did on project 4) and working in programs like Maya and Blender. We spent a lot of time
+                learning how to develop Renderman compatible shaders (OSL, SE Expressions, RSL) and a lot of development in modeling (in Blender mostly).
+            </p>
         </div>
 
         <div class="results">
+            <h2>
+                Results
+            </h2>
+            <div align="center">
+                <h4>
+                    Bubble Generation (using Blender's Glass BSDF)
+                </h4>
+                <img src="assets/img/img9.png" width="400px" height="250px" />
+                <img src="assets/img/img10.png" width="400px" height="250px" />
 
+                <h4>
+                    Our Ice Renderings
+                </h4>
+                <img src="assets/img/img4.png" width="400px" height="250px" />
+                <img src="assets/img/img7.png" width="400px" height="250px" />
+
+                <h4>
+                    Adding dirt shader (before and after)
+                </h4>
+                <img src="assets/img/img6.png" width="400px" height="250px" />
+                <img src="assets/img/img8.png" width="400px" height="250px" />
+
+            </div>
         </div>
 
         <div class="references">
-
+            <h2>
+                References
+            </h2>
+            <p>
+                The tools and references we used largely revolves around Vanessa Castillo's Realistic Rendering of Blue Ice paper and Amin Ghafari's paper on Realistic Renderings of Ice and Crack Propagations. We also looked up how
+                to go about implementing the techniques discussed in these papers, which will be listed below.
+            </p>
+            <ul>
+                <li><a href="https://nccastaff.bournemouth.ac.uk/jmacey/MastersProjects/MSc09/Salas/Vanessa_Salas_Castillo.pdf">Castillo's Realistic Rendering of Blue Ice</a></li>
+                <li><a href="https://aminghafari.github.io/projects/realistic-rendering-ice.pdf">Ghafari's Realistic Rendering of Ice and Crack Propagations</a></li>
+                <li><a href="https://renderman.pixar.com/resources/RenderMan_20/subsurface.html">Pixar Renderman Subsurface Scattering</a></li>
+                <li><a href="https://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch16.html">Nvidia Subsurface Scattering</a></li>
+                <li><a href="https://renderman.pixar.com/resources/RenderMan_20/PxrOSL.html">PxrOSL</a></li>
+                <li><a href="https://sdm.scad.edu/faculty/mkesson/vsfx502/wip/fall17/aberdeen_shang/maya_shader_animation/index.html">Renderman shader example used for inspiration</a></li>
+            </ul>
         </div>
 
         <div class="contributions">
-
+            <h2>
+                Contributions
+            </h2>
+            <p>
+                Max created the shader and renderings. Rina and Sean worked on creating the ice models in blender with random bubble generations and tried crack propagation. We all contributed to the final video and write ups.
+            </p>
         </div>
 
     </div>
